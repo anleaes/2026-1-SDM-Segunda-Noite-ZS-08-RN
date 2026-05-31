@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import React from 'react';
 import CustomDrawerContent from '../components/CustomDrawerContent';
-import CategoriesScreen, { Category } from '../screens/CategoriesScreen';
+import AlimentosScreen, { Alimento } from '../screens/AlimentosScreen';
 import CreateCategoryScreen from '../screens/CreateCategoryScreen';
 import EditCategoryScreen from '../screens/EditCategoryScreen';
 import HomeScreen from '../screens/HomeScreen';
@@ -42,11 +42,11 @@ const DrawerNavigator = () => {
         }}
       />
       <Drawer.Screen
-        name="Categories"
-        component={CategoriesScreen}
+        name="Alimentos"
+        component={AlimentosScreen}
         options={{
           drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color} />,
-          title: 'Categorias',
+          title: 'Alimentos',
         }}
       />
       <Drawer.Screen
