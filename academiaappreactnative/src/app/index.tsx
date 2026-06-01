@@ -1,12 +1,11 @@
-import DrawerNavigator from '@/navigation/DrawerNavigator';
+import DrawerNavigator from '../../navigation/DrawerNavigator';
 import { NavigationContainer } from '@react-navigation/native';
-import { registerRootComponent } from 'expo';
+import React from 'react';
 
-const App = () => (
-  <NavigationContainer>
-    <DrawerNavigator />
-  </NavigationContainer>
-);
-
-registerRootComponent(App);
-
+export default function App() {
+  return (
+    <NavigationContainer>
+      <DrawerNavigator />
+    </NavigationContainer>
+  );
+}
