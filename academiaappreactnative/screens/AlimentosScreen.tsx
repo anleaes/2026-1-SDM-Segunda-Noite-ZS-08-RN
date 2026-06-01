@@ -38,12 +38,12 @@ const AlimentosScreen = ({ navigation }: Props) => {
     setAlimentos(prev => prev.filter(c => c.id !== id));
   };
 
-  const renderItem = ({ item }: { item: Alimentos }) => (
+  const renderItem = ({ item }: { item: Alimento }) => (
     <View style={styles.card}>
       <Text style={styles.name}>{item.name}</Text>
       <TouchableOpacity
         style={styles.editButton}
-        onPress={() => navigation.navigate('EditAlimentos', { alimento: item })}
+        onPress={() => navigation.navigate('EditaAlimentos', { alimento: item })}
       >
       <Text style={styles.editText}>Editar</Text>
       </TouchableOpacity>
@@ -71,7 +71,7 @@ const AlimentosScreen = ({ navigation }: Props) => {
       )}
       <TouchableOpacity
       style={styles.fab}
-      onPress={() => navigation.navigate('CreateAlimento')}
+      onPress={() => navigation.navigate('CriaAlimentos')}
     >
       <Ionicons name="add" size={28} color="#fff"  />
     </TouchableOpacity>
