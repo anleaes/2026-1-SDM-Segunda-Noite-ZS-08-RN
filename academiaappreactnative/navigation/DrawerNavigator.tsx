@@ -36,7 +36,7 @@ const DrawerNavigator = () => {
         name="Alimentos"
         component={AlimentosScreen}
         options={{
-          drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color} />,
+          drawerIcon: ({ color, size }) => <Ionicons name="fish-outline" size={size} color={color} />,
           title: 'Alimentos',
         }}
       />  
