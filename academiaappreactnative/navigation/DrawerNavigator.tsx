@@ -1,22 +1,16 @@
 import { Ionicons } from '@expo/vector-icons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import React from 'react';
-import CustomDrawerContent from '../components/CustomDrawerContent';
+import CustomDrawerContent from '../src/components/CustomDrawerContent';
 
-import AlimentosScreen, { Alimento } from '../screens/AlimentosScreen';
+import { DrawerParamList } from './types';
+
+import AlimentosScreen from '../screens/AlimentosScreen';
 import CriaAlimentosScreen from '../screens/CriaAlimentosScreen';
 import EditaAlimentosScreen from '../screens/EditaAlimentosScreen';
 import HomeScreen from '../screens/HomeScreen';
 
-export type DrawerParamList = {
-  Home: undefined;
-  Alimentos: undefined;
-  CriaAlimentos: undefined; 
-  EditaAlimentos: { category: Alimento };
-};
-
 const Drawer = createDrawerNavigator<DrawerParamList>();
-
 const DrawerNavigator = () => {
   return (
     <Drawer.Navigator

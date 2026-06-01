@@ -1,4 +1,4 @@
-import DrawerNavigator from '@/navigation/DrawerNavigator';
+import DrawerNavigator from '../../navigation/DrawerNavigator';
 import { NavigationContainer } from '@react-navigation/native';
 import { registerRootComponent } from 'expo';
 

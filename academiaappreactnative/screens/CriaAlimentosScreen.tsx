@@ -2,7 +2,7 @@ import { DrawerScreenProps } from '@react-navigation/drawer';
 import { useFocusEffect } from 'expo-router';
 import React, { useCallback, useState } from 'react';
 import { ActivityIndicator, Button, StyleSheet, Text, TextInput, View } from 'react-native';
-import { DrawerParamList } from '../navigation/DrawerNavigator';
+import { DrawerParamList } from '../navigation/types'
 
 type Props = DrawerScreenProps<DrawerParamList, 'CriaAlimentos'>;
 
