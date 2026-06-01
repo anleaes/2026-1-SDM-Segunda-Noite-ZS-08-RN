@@ -2,20 +2,17 @@ import { Ionicons } from '@expo/vector-icons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import React from 'react';
 import CustomDrawerContent from '../components/CustomDrawerContent';
+
 import AlimentosScreen, { Alimento } from '../screens/AlimentosScreen';
-import CreateCategoryScreen from '../screens/CreateCategoryScreen';
-import EditCategoryScreen from '../screens/EditCategoryScreen';
+import CriaAlimentosScreen from '../screens/CriaAlimentosScreen';
+import EditaAlimentosScreen from '../screens/EditaAlimentosScreen';
 import HomeScreen from '../screens/HomeScreen';
-import ProductsScreen from '../screens/ProductsScreen';
-import SocialnetworksScreen from '../screens/SocialnetworksScreen';
 
 export type DrawerParamList = {
   Home: undefined;
-  Categories: undefined;
-  CreateCategory: undefined; 
-  EditCategory: { category: Category };
-  Products: undefined;
-  Socialnetworks: undefined;  
+  Alimentos: undefined;
+  CriaAlimentos: undefined; 
+  EditaAlimentos: { category: Alimento };
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -48,33 +45,17 @@ const DrawerNavigator = () => {
           drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color} />,
           title: 'Alimentos',
         }}
+      />  
+      <Drawer.Screen
+        name="CriaAlimentos"
+        component={CriaAlimentosScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Novo alimento' }}
       />
       <Drawer.Screen
-        name="CreateCategory"
-        component={CreateCategoryScreen}
-        options={{ drawerItemStyle: { display: 'none' }, title: 'Nova categoria' }}
+        name="EditaAlimentos"
+        component={EditaAlimentosScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Editar alimento' }}
       />
-      <Drawer.Screen
-        name="EditCategory"
-        component={EditCategoryScreen}
-        options={{ drawerItemStyle: { display: 'none' }, title: 'Editar categoria' }}
-      />
-      <Drawer.Screen
-        name="Products"
-        component={ProductsScreen}
-        options={{
-          drawerIcon: ({ color, size }) => <Ionicons name="cart" size={size} color={color} />,
-          title: 'Produtos',
-        }}
-      />
-      <Drawer.Screen
-        name="Socialnetworks"
-        component={SocialnetworksScreen}
-        options={{
-          drawerIcon: ({ color, size }) => <Ionicons name="logo-facebook" size={size} color={color} />,
-          title: 'Redes Socias',
-        }}
-      />      
     </Drawer.Navigator>  
   );
 };
