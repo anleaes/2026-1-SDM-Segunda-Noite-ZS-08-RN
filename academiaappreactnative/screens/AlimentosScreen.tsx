@@ -9,7 +9,7 @@ type Props = DrawerScreenProps<DrawerParamList, 'Alimentos'>;
 
 export type Alimento = {
   id: number;
-  name: string;
+  nome: string;
 }
 
 const AlimentosScreen = ({ navigation }: Props) => {
@@ -40,7 +40,7 @@ const AlimentosScreen = ({ navigation }: Props) => {
 
   const renderItem = ({ item }: { item: Alimento }) => (
     <View style={styles.card}>
-      <Text style={styles.name}>{item.name}</Text>
+      <Text style={styles.name}>{item.nome}</Text>
       <TouchableOpacity
         style={styles.editButton}
         onPress={() => navigation.navigate('EditaAlimentos', { alimento: item })}

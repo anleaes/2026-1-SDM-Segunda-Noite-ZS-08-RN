@@ -7,11 +7,11 @@ type Props = DrawerScreenProps<DrawerParamList, 'EditaAlimentos'>;
 
 const EditaAlimentosScreen = ({ route, navigation }: Props) => {
   const { alimento } = route.params;
-  const [name, setName] = useState(alimento.name);
+  const [nome, setName] = useState(alimento.nome);
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    setName(alimento.name);
+    setName(alimento.nome);
   }, [alimento]);  
 
   const handleSave = async () => {
@@ -21,7 +21,7 @@ const EditaAlimentosScreen = ({ route, navigation }: Props) => {
       {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name }),
+        body: JSON.stringify({ nome }),
       }
     );
     navigation.navigate('Alimentos');        
@@ -32,7 +32,7 @@ const EditaAlimentosScreen = ({ route, navigation }: Props) => {
     <View style={styles.container}>
       <Text style={styles.label}>Nome</Text>
       <TextInput
-        value={name}
+        value={nome}
         onChangeText={setName}
         style={styles.input}
       />

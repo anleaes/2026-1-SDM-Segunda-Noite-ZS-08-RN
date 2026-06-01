@@ -1,6 +1,11 @@
 export type Alimento = {
   id: number;
-  name: string;
+  nome: string;
+  calorias_por_100g: string;
+  proteinas_g: string;
+  carboidratos_g: string;
+  gorduras_g: string;
+  fibras_g: string;
 };
 
 export type DrawerParamList = {
