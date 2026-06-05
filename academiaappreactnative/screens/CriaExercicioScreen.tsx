@@ -48,7 +48,7 @@ const CriaExercicioScreen = ({ navigation }: Props) => {
       <Text style={styles.label}>Instruções de Execução</Text>
       <TextInput value={instrucoes} onChangeText={setInstrucoes} style={[styles.input, { height: 80 }]} multiline />
 
-      <Text style={styles.label}>Dificuldade (F, M, D)</Text>
+      <Text style={styles.label}>Dificuldade: (F)ácil, (M)édio, (D)ifícil</Text>
       <TextInput value={dificuldade} onChangeText={setDificuldade} style={styles.input} maxLength={1} autoCapitalize="characters" />
 
       <View style={styles.buttonContainer}>
