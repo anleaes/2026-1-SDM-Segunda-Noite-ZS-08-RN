@@ -16,6 +16,23 @@ export type Exercicio = {
   dificuldade: string;
 };
 
+export type Treino = {
+  id: number;
+  aluno: number;
+  instrutor: number; 
+  nome: string;
+  descricao: string;
+  duracao_minutos: number;
+};
+
+export type ItemTreino = {
+  exercicio: string;
+  series: string;
+  repeticoes: string;
+  carga_kg: string;
+  intervalo_segundos: string;
+};
+
 export type DrawerParamList = {
   Home: undefined;
   Alimentos: undefined;
@@ -24,4 +41,6 @@ export type DrawerParamList = {
   Exercicios: undefined;
   CriaExercicio: undefined;
   EditaExercicio: { exercicio: Exercicio };
+  Treinos: undefined;
+  CriaTreino: undefined;
 };
