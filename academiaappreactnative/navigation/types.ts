@@ -8,11 +8,20 @@ export type Alimento = {
   fibras_g: string;
 };
 
+export type Exercicio = {
+  id: number;
+  nome: string;
+  descricao: string;
+  instrucoes: string;
+  dificuldade: string;
+};
+
 export type DrawerParamList = {
   Home: undefined;
   Alimentos: undefined;
   CriaAlimentos: undefined; 
   EditaAlimentos: { alimento: Alimento };
-  Products: undefined;
-  Socialnetworks: undefined;  
+  Exercicios: undefined;
+  CriaExercicio: undefined;
+  EditaExercicio: { exercicio: Exercicio };
 };
