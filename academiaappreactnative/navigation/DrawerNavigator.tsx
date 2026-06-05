@@ -8,6 +8,7 @@ import { DrawerParamList } from './types';
 import AlimentosScreen from '../screens/AlimentosScreen';
 import CriaAlimentosScreen from '../screens/CriaAlimentosScreen';
 import EditaAlimentosScreen from '../screens/EditaAlimentosScreen';
+import ExerciciosScreen from '../screens/ExerciciosScreen';
 import HomeScreen from '../screens/HomeScreen';
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -38,6 +39,14 @@ const DrawerNavigator = () => {
         options={{
           drawerIcon: ({ color, size }) => <Ionicons name="fish-outline" size={size} color={color} />,
           title: 'Alimentos',
+        }}
+      />  
+      <Drawer.Screen
+        name="Exercicios"
+        component={ExerciciosScreen}
+        options={{
+          drawerIcon: ({ color, size }) => <Ionicons name="fish-outline" size={size} color={color} />,
+          title: 'Exercícios',
         }}
       />  
       <Drawer.Screen
