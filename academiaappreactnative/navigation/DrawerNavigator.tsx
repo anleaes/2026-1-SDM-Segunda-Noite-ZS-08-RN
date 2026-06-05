@@ -12,6 +12,7 @@ import ExerciciosScreen from '../screens/ExerciciosScreen';
 import CriaExercicioScreen from '../screens/CriaExercicioScreen';
 import EditaExercicioScreen from '../screens/EditaExercicioScreen';
 import TreinosScreen from '../screens/TreinosScreen';
+import CriaTreinoScreen from '../screens/CriaTreinoScreen';
 import HomeScreen from '../screens/HomeScreen';
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -69,6 +70,11 @@ const DrawerNavigator = () => {
         name="CriaExercicio"
         component={CriaExercicioScreen}
         options={{ drawerItemStyle: { display: 'none' }, title: 'Novo exercício' }}
+      />
+      <Drawer.Screen
+        name="CriaTreino"
+        component={CriaTreinoScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Novo treino' }}
       />
       <Drawer.Screen
         name="EditaAlimentos"
