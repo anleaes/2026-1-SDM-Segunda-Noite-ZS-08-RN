@@ -13,6 +13,9 @@ import CriaExercicioScreen from '../screens/CriaExercicioScreen';
 import EditaExercicioScreen from '../screens/EditaExercicioScreen';
 import TreinosScreen from '../screens/TreinosScreen';
 import CriaTreinoScreen from '../screens/CriaTreinoScreen';
+import AlunosScreen from '../screens/AlunosScreen';
+//import CriaExercicioScreen from '../screens/CriaExercicioScreen';
+//import EditaExercicioScreen from '../screens/EditaExercicioScreen';
 import HomeScreen from '../screens/HomeScreen';
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -59,6 +62,14 @@ const DrawerNavigator = () => {
         options={{
           drawerIcon: ({ color, size }) => <Ionicons name="fish-outline" size={size} color={color} />,
           title: 'Treinos',
+        }}
+      />  
+      <Drawer.Screen
+        name="Alunos"
+        component={AlunosScreen}
+        options={{
+          drawerIcon: ({ color, size }) => <Ionicons name="fish-outline" size={size} color={color} />,
+          title: 'Alunos',
         }}
       />  
       <Drawer.Screen

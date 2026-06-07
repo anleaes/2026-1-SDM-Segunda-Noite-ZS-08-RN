@@ -33,6 +33,19 @@ export type ItemTreino = {
   intervalo_segundos: string;
 };
 
+export type Aluno = {
+  id: number;
+  nome: string;
+  sobrenome: string;
+  cpf: string;
+  peso: string;
+  altura: string;
+  genero: string;
+  objetivo: string;
+  data_matricula: string;
+  plano: number;
+};
+
 export type DrawerParamList = {
   Home: undefined;
   Alimentos: undefined;
@@ -43,4 +56,7 @@ export type DrawerParamList = {
   EditaExercicio: { exercicio: Exercicio };
   Treinos: undefined;
   CriaTreino: undefined;
+  Alunos: undefined;
+  CriaAluno: undefined;
+  EditaAluno: { aluno: Aluno };
 };
