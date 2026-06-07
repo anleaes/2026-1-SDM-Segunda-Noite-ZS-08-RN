@@ -106,4 +106,7 @@ export type DrawerParamList = {
   Refeicoes: undefined;
   CriaRefeicao: undefined;
   EditaRefeicao: { refeicao: Refeicao };
+  Anamneses: undefined;
+  CriaAnamnese: undefined;
+  EditaAnamnese: { anamnese: Anamnese };
 };
