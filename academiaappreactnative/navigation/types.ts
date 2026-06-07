@@ -72,6 +72,21 @@ export type Refeicao ={
   alimentos: number[];
 }
 
+export type Anamnese = {
+  id: number;
+  aluno: number;
+  ultima_atualizacao: string;
+  problemas_cardiacos: boolean;
+  cirurgias_recentes: boolean;
+  alergias: string;
+  restricoes_fisicas: string;
+  medicamentos_em_uso: string;
+  pressao_arterial: string;
+  diabetes: boolean;
+  fumante: boolean;
+  observacoes: string;
+};
+
 export type DrawerParamList = {
   Home: undefined;
   Alimentos: undefined;
@@ -91,4 +106,7 @@ export type DrawerParamList = {
   Refeicoes: undefined;
   CriaRefeicao: undefined;
   EditaRefeicao: { refeicao: Refeicao };
+  Anamneses: undefined;
+  CriaAnamnese: undefined;
+  EditaAnamnese: { anamnese: Anamnese };
 };
