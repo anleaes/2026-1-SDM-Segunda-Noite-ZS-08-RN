@@ -24,7 +24,7 @@ import CriaRefeicaoScreen from '../screens/CriaRefeicaoScreen';
 import EditaRefeicaoScreen from '../screens/EditaRefeicaoScreen';
 import AnamnesesScreen from '../screens/AnamnesesScreen';
 import CriaAnamneseScreen from '../screens/CriaAnamneseScreen';
-//import EditaAnamneseScreen from '../screens/EditaAnamneseScreen';
+import EditaAnamneseScreen from '../screens/EditaAnamneseScreen';
 import HomeScreen from '../screens/HomeScreen';
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -165,6 +165,12 @@ const DrawerNavigator = () => {
         component={EditaRefeicaoScreen}
         options={{ drawerItemStyle: { display: 'none' }, title: 'Editar refeição' }}
       />
+      <Drawer.Screen
+        name="EditaAnamnese"
+        component={EditaAnamneseScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Editar ficha médica' }}
+      />
+
     </Drawer.Navigator>  
   );
 };
