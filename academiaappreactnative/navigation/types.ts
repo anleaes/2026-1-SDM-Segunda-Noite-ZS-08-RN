@@ -38,6 +38,9 @@ export type Aluno = {
   nome: string;
   sobrenome: string;
   cpf: string;
+  email: string;
+  telefone: string;
+  data_nascimento: string;
   peso: string;
   altura: string;
   genero: string;

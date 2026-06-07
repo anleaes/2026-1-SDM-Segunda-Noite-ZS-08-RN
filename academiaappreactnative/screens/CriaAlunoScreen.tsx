@@ -13,6 +13,9 @@ const CriaAlunoScreen = ({ navigation }: Props) => {
   const [nome, setNome] = useState('');
   const [sobrenome, setSobrenome] = useState('');
   const [cpf, setCpf] = useState('');
+  const [email, setEmail] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [dataNascimento, setDataNascimento] = useState('');
   const [peso, setPeso] = useState('');
   const [altura, setAltura] = useState('');
   const [genero, setGenero] = useState('N');
@@ -31,13 +34,24 @@ const CriaAlunoScreen = ({ navigation }: Props) => {
 
   useFocusEffect(
     useCallback(() => {
-      setNome(''); setSobrenome(''); setCpf(''); setPeso(''); setAltura('');
-      setGenero('N'); setObjetivo(''); setPlanoId('');
+      setNome(''); setSobrenome(''); setCpf(''); 
+      setEmail(''); setTelefone(''); setDataNascimento('');
+      setPeso(''); setAltura(''); setGenero('N'); 
+      setObjetivo(''); setPlanoId('');
     }, [])
   );
 
   const handleSave = async () => {
     setSaving(true);
+    
+    let formatarData = dataNascimento;
+    if (dataNascimento.includes('/')){
+        const partes = dataNascimento.split('/');
+        if (partes.length===3){
+            formatarData = `${partes[2]}-${partes[1]}-${partes[0]}`;
+        }
+    }
+    
     try {
       const res = await fetch('http://localhost:8000/alunos/', {
         method: 'POST',
@@ -46,6 +60,9 @@ const CriaAlunoScreen = ({ navigation }: Props) => {
           nome, 
           sobrenome, 
           cpf,
+          email,
+          telefone,
+          data_nascimento: formatarData,
           peso: peso.replace(',', '.') || null,
           altura: altura.replace(',', '.') || null,
           genero,
@@ -73,8 +90,13 @@ const CriaAlunoScreen = ({ navigation }: Props) => {
       
       <TextInput placeholder="Nome" value={nome} onChangeText={setNome} style={styles.input} />
       <TextInput placeholder="Sobrenome" value={sobrenome} onChangeText={setSobrenome} style={styles.input} />
-      <TextInput placeholder="CPF (Apenas números)" value={cpf} onChangeText={setCpf} style={styles.input} keyboardType="numeric" />
+      <TextInput placeholder="CPF" value={cpf} onChangeText={setCpf} style={styles.input} keyboardType="numeric" />
       
+      {}
+      <TextInput placeholder="E-mail" value={email} onChangeText={setEmail} style={styles.input} keyboardType="email-address" autoCapitalize="none" />
+      <TextInput placeholder="Número de Telefone" value={telefone} onChangeText={setTelefone} style={styles.input} keyboardType="phone-pad" />
+      <TextInput placeholder="Data de Nascimento" value={dataNascimento} onChangeText={setDataNascimento} style={styles.input} />
+
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
         <TextInput placeholder="Peso (Kg)" value={peso} onChangeText={setPeso} style={[styles.input, { flex: 1, marginRight: 5 }]} keyboardType="numeric" />
         <TextInput placeholder="Altura (m)" value={altura} onChangeText={setAltura} style={[styles.input, { flex: 1, marginLeft: 5 }]} keyboardType="numeric" />
