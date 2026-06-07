@@ -7,6 +7,17 @@ import { DrawerParamList, Instrutor } from '../navigation/types';
 
 type Props = DrawerScreenProps<DrawerParamList, 'Instrutores'>;
 
+const especialidadeMap: Record<string, string> = {
+  'MUSC': 'Musculação',
+  'FUNC': 'Treinamento Funcional',
+  'PILA': 'Pilates',
+  'CROS': 'Cross Training',
+  'DANC': 'Dança / Ritmos',
+  'LUTA': 'Artes Marciais',
+  'NATA': 'Natação',
+  'GERA': 'Ginástica Geral',
+};
+
 const InstrutoresScreen = ({ navigation }: Props) => {
   const [instrutores, setInstrutores] = useState<Instrutor[]>([]);
   const [loading, setLoading] = useState(true);
@@ -30,27 +41,31 @@ const InstrutoresScreen = ({ navigation }: Props) => {
     setInstrutores(prev => prev.filter(i => i.id !== id));
   };
 
-  const renderItem = ({ item }: { item: Instrutor }) => (
-    <View style={styles.card}>
-      <Text style={styles.name}>{item.nome} {item.sobrenome}</Text>
-      <Text style={styles.description}>CREF: {item.cref} | Especialidade: {item.especialidade}</Text>
-      
-      <View style={styles.row}>
-        <TouchableOpacity
-          style={styles.editButton}
-          onPress={() => navigation.navigate('EditaInstrutor', { instrutor: item })}
-        >
-          <Text style={styles.editText}>Editar</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.deleteButton}
-          onPress={() => handleDelete(item.id)}
-        >
-          <Text style={styles.editText}>Excluir</Text>
-        </TouchableOpacity>
+  const renderItem = ({ item }: { item: Instrutor }) => {
+    const especialidadeFormatada = especialidadeMap[item.especialidade] || item.especialidade;
+
+    return (
+      <View style={styles.card}>
+        <Text style={styles.name}>{item.nome} {item.sobrenome}</Text>
+        <Text style={styles.description}>CREF: {item.cref} | Especialidade: {especialidadeFormatada}</Text>
+        
+        <View style={styles.row}>
+          <TouchableOpacity
+            style={styles.editButton}
+            onPress={() => navigation.navigate('EditaInstrutor', { instrutor: item })}
+          >
+            <Text style={styles.editText}>Editar</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.deleteButton}
+            onPress={() => handleDelete(item.id)}
+          >
+            <Text style={styles.editText}>Excluir</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
-  );
+    );
+  };
 
   return ( 
     <View style={styles.container}>
