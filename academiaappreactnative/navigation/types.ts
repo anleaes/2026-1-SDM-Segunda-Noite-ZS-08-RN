@@ -49,6 +49,20 @@ export type Aluno = {
   plano: number;
 };
 
+export type Instrutor = {
+  id: number;
+  nome: string;
+  sobrenome: string;
+  cpf: string;
+  email: string;
+  telefone: string;
+  data_nascimento: string;
+  cref: string;
+  especialidade: string;
+  salario: string;
+  data_admissao: string;
+};
+
 export type DrawerParamList = {
   Home: undefined;
   Alimentos: undefined;
