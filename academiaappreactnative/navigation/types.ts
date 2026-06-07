@@ -76,4 +76,7 @@ export type DrawerParamList = {
   Alunos: undefined;
   CriaAluno: undefined;
   EditaAluno: { aluno: Aluno };
+  Instrutores: undefined;
+  CriaInstrutor: undefined;
+  EditaInstrutor: { instrutor: Instrutor };
 };
