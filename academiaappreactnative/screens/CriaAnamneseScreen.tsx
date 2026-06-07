@@ -67,7 +67,7 @@ const CriaAnamneseScreen = ({ navigation }: Props) => {
 
       if (!res.ok) {
         const err = await res.json();
-        alert('Erro ao salvar (O aluno já possui ficha?): \n' + JSON.stringify(err));
+        alert('Erro ao salvar (O aluno já possui ficha.): \n' + JSON.stringify(err));
       } else {
         navigation.navigate('Anamneses');  
       }
@@ -120,7 +120,7 @@ const CriaAnamneseScreen = ({ navigation }: Props) => {
       <TextInput placeholder="Observações Gerais" value={observacoes} onChangeText={setObservacoes} style={[styles.input, { height: 80 }]} multiline />
 
       <View style={styles.buttonContainer}>
-        {saving ? <ActivityIndicator size="large" color="#4B7BE5" /> : <Button title="Salvar Anamnese" onPress={handleSave} color="#4B7BE5" />}
+        {saving ? <ActivityIndicator size="large" color="#4B7BE5" /> : <Button title="Salvar ficha média" onPress={handleSave} color="#4B7BE5" />}
       </View>
       <Button title="Voltar" onPress={() => navigation.navigate('Anamneses')} color="#666" />
     </ScrollView>
