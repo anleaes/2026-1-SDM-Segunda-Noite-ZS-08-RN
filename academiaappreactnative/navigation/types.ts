@@ -63,6 +63,15 @@ export type Instrutor = {
   data_admissao: string;
 };
 
+export type Refeicao ={
+  id: number;
+  nome: string;
+  horario: string;
+  descricao: string;
+  plano_alimentar: number | null;
+  alimentos: number[];
+}
+
 export type DrawerParamList = {
   Home: undefined;
   Alimentos: undefined;
@@ -79,4 +88,7 @@ export type DrawerParamList = {
   Instrutores: undefined;
   CriaInstrutor: undefined;
   EditaInstrutor: { instrutor: Instrutor };
+  Refeicoes: undefined;
+  CriaRefeicao: undefined;
+  EditaRefeicao: { refeicao: Refeicao };
 };
