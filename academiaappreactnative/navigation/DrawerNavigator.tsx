@@ -22,6 +22,9 @@ import EditaInstrutorScreen from '../screens/EditaInstrutorScreen';
 import RefeicoesScreen from '../screens/RefeicoesScreen';
 import CriaRefeicaoScreen from '../screens/CriaRefeicaoScreen';
 import EditaRefeicaoScreen from '../screens/EditaRefeicaoScreen';
+import AnamnesesScreen from '../screens/AnamnesesScreen';
+//import CriaAnamneseScreen from '../screens/CriaAnamneseScreen';
+//import EditaAnamneseScreen from '../screens/EditaAnamneseScreen';
 import HomeScreen from '../screens/HomeScreen';
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -92,6 +95,14 @@ const DrawerNavigator = () => {
         options={{
           drawerIcon: ({ color, size }) => <Ionicons name="fish-outline" size={size} color={color} />,
           title: 'Refeições',
+        }}
+      />  
+      <Drawer.Screen
+        name="Anamneses"
+        component={AnamnesesScreen}
+        options={{
+          drawerIcon: ({ color, size }) => <Ionicons name="fish-outline" size={size} color={color} />,
+          title: 'Anamneses',
         }}
       />  
       <Drawer.Screen
