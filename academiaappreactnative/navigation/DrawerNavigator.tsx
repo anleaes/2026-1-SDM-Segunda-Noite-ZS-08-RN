@@ -21,7 +21,7 @@ import CriaInstrutorScreen from '../screens/CriaInstrutorScreen';
 import EditaInstrutorScreen from '../screens/EditaInstrutorScreen';
 import RefeicoesScreen from '../screens/RefeicoesScreen';
 import CriaRefeicaoScreen from '../screens/CriaRefeicaoScreen';
-//import EditaRefeicaoScreen from '../screens/EditaRefeicaoScreen';
+import EditaRefeicaoScreen from '../screens/EditaRefeicaoScreen';
 import HomeScreen from '../screens/HomeScreen';
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -143,6 +143,11 @@ const DrawerNavigator = () => {
         name="EditaInstrutor"
         component={EditaInstrutorScreen}
         options={{ drawerItemStyle: { display: 'none' }, title: 'Editar instrutor' }}
+      />
+      <Drawer.Screen
+        name="EditaRefeicao"
+        component={EditaRefeicaoScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Editar refeição' }}
       />
     </Drawer.Navigator>  
   );
