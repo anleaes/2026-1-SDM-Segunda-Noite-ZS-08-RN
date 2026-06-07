@@ -23,7 +23,7 @@ import RefeicoesScreen from '../screens/RefeicoesScreen';
 import CriaRefeicaoScreen from '../screens/CriaRefeicaoScreen';
 import EditaRefeicaoScreen from '../screens/EditaRefeicaoScreen';
 import AnamnesesScreen from '../screens/AnamnesesScreen';
-//import CriaAnamneseScreen from '../screens/CriaAnamneseScreen';
+import CriaAnamneseScreen from '../screens/CriaAnamneseScreen';
 //import EditaAnamneseScreen from '../screens/EditaAnamneseScreen';
 import HomeScreen from '../screens/HomeScreen';
 
@@ -134,6 +134,11 @@ const DrawerNavigator = () => {
         name="CriaRefeicao"
         component={CriaRefeicaoScreen}
         options={{ drawerItemStyle: { display: 'none' }, title: 'Nova refeição' }}
+      />
+      <Drawer.Screen
+        name="CriaAnamnese"
+        component={CriaAnamneseScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Nova anamnese' }}
       />
       <Drawer.Screen
         name="EditaAlimentos"
