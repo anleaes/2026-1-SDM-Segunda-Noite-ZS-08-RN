@@ -92,22 +92,22 @@ const CriaAnamneseScreen = ({ navigation }: Props) => {
       <Text style={styles.sectionTitle}>Condições Clínicas</Text>
       
       <View style={styles.switchRow}>
-        <Text style={styles.switchLabel}>Problemas Cardíacos?</Text>
+        <Text style={styles.switchLabel}>Problemas Cardíacos</Text>
         <Switch value={problemasCardiacos} onValueChange={setProblemasCardiacos} trackColor={{ true: '#4B7BE5' }} />
       </View>
 
       <View style={styles.switchRow}>
-        <Text style={styles.switchLabel}>Cirurgias Recentes?</Text>
+        <Text style={styles.switchLabel}>Cirurgias Recentes</Text>
         <Switch value={cirurgiasRecentes} onValueChange={setCirurgiasRecentes} trackColor={{ true: '#4B7BE5' }} />
       </View>
 
       <View style={styles.switchRow}>
-        <Text style={styles.switchLabel}>Diabetes?</Text>
+        <Text style={styles.switchLabel}>Diabetes</Text>
         <Switch value={diabetes} onValueChange={setDiabetes} trackColor={{ true: '#4B7BE5' }} />
       </View>
 
       <View style={styles.switchRow}>
-        <Text style={styles.switchLabel}>Fumante?</Text>
+        <Text style={styles.switchLabel}>Fumante</Text>
         <Switch value={fumante} onValueChange={setFumante} trackColor={{ true: '#4B7BE5' }} />
       </View>
 
