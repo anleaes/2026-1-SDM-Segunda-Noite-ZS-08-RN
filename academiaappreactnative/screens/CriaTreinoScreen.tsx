@@ -159,7 +159,6 @@ const CriaTreinoScreen = ({ navigation }: Props) => {
   return (
     <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 40 }}>
       
-      {}
       <View style={styles.sectionCard}>
         <Text style={styles.sectionTitle}>1. Dados do Treino</Text>
         
@@ -185,7 +184,6 @@ const CriaTreinoScreen = ({ navigation }: Props) => {
         <TextInput placeholder="Descrição" value={descricao} onChangeText={setDescricao} style={styles.input} />
       </View>
 
-      {}
       <View style={styles.sectionCard}>
         <Text style={styles.sectionTitle}>2. Adicionar Exercício</Text>
         
@@ -209,7 +207,6 @@ const CriaTreinoScreen = ({ navigation }: Props) => {
         <Button title="+ Adicionar ao Carrinho" onPress={adicionarAoCarrinho} color="#28a745" />
       </View>
 
-      {}
       <View style={styles.sectionCard}>
         <Text style={styles.sectionTitle}>🛒 Itens no Treino ({carrinho.length})</Text>
         {carrinho.length === 0 && <Text style={{ color: '#999', fontStyle: 'italic' }}>Nenhum exercício adicionado ainda.</Text>}
@@ -221,7 +218,6 @@ const CriaTreinoScreen = ({ navigation }: Props) => {
         ))}
       </View>
 
-      {}
       <View style={styles.buttonContainer}>
         {saving
           ? <ActivityIndicator size="large" color="#4B7BE5" />

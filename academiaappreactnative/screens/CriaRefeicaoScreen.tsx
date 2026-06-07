@@ -89,8 +89,7 @@ const CriaRefeicaoScreen = ({ navigation }: Props) => {
           {listaPlanos.map(p => <Picker.Item key={p.id} label={p.titulo} value={p.id.toString()} />)}
         </Picker>
       </View>
-
-      {}
+      
       <Text style={styles.label}>Selecione os Alimentos ({alimentosSelecionados.length} selecionados)</Text>
       <View style={styles.multiSelectBox}>
         {listaAlimentos.map(a => {
