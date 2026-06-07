@@ -34,7 +34,7 @@ const RefeicoesScreen = ({ navigation }: Props) => {
     <View style={styles.card}>
       <Text style={styles.name}>{item.nome}</Text>
       <Text style={styles.description}>
-        Horário: {item.horario.substring(0, 5)} | Plano Alimentar: {item.plano_alimentar || 'Avulsa'}
+        Horário: {item.horario.substring(0, 5)} | Plano Alimentar: {item.plano_alimentar || 'Nenhum'}
       </Text>
       
       <View style={styles.row}>
