@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome6, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import React from 'react';
 import CustomDrawerContent from '../src/components/CustomDrawerContent';
@@ -28,17 +28,40 @@ import EditaAnamneseScreen from '../screens/EditaAnamneseScreen';
 import HomeScreen from '../screens/HomeScreen';
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
+
 const DrawerNavigator = () => {
   return (
     <Drawer.Navigator
       initialRouteName="Home"
       drawerContent={(props) => <CustomDrawerContent {...props} />}
       screenOptions={{
-        drawerActiveTintColor: '#4B7BE5',
-        drawerLabelStyle: { marginLeft: 0, fontSize: 16 },
-        drawerStyle: { backgroundColor: '#fff', width: 250 },
-        headerStyle: { backgroundColor: '#4B7BE5' },
-        headerTintColor: '#fff',
+        headerStyle: { 
+          backgroundColor: '#1A1A2E',
+          elevation: 0,
+          shadowOpacity: 0,
+        },
+        headerTintColor: '#ffffff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+
+        drawerStyle: { 
+          backgroundColor: '#1A1A2E', 
+          width: 260 
+        },
+        drawerActiveTintColor: '#ffffff',
+        drawerActiveBackgroundColor: '#4B7BE5',
+        drawerInactiveTintColor: '#A0A0B0',
+        
+        drawerItemStyle: {
+          borderRadius: 8,
+          marginVertical: 4,
+          paddingHorizontal: 8,
+        },
+        drawerLabelStyle: { 
+          fontSize: 16,
+          fontWeight: '600'
+        },
       }}
     >
       <Drawer.Screen
@@ -50,34 +73,10 @@ const DrawerNavigator = () => {
         }}
       />
       <Drawer.Screen
-        name="Alimentos"
-        component={AlimentosScreen}
-        options={{
-          drawerIcon: ({ color, size }) => <Ionicons name="fish-outline" size={size} color={color} />,
-          title: 'Alimentos',
-        }}
-      />  
-      <Drawer.Screen
-        name="Exercicios"
-        component={ExerciciosScreen}
-        options={{
-          drawerIcon: ({ color, size }) => <Ionicons name="fish-outline" size={size} color={color} />,
-          title: 'Exercícios',
-        }}
-      />  
-      <Drawer.Screen
-        name="Treinos"
-        component={TreinosScreen}
-        options={{
-          drawerIcon: ({ color, size }) => <Ionicons name="fish-outline" size={size} color={color} />,
-          title: 'Treinos',
-        }}
-      />  
-      <Drawer.Screen
         name="Alunos"
         component={AlunosScreen}
         options={{
-          drawerIcon: ({ color, size }) => <Ionicons name="fish-outline" size={size} color={color} />,
+          drawerIcon: ({ color, size }) => <Ionicons name="people-outline" size={size} color={color} />,
           title: 'Alunos',
         }}
       />  
@@ -85,15 +84,39 @@ const DrawerNavigator = () => {
         name="Instrutores"
         component={InstrutoresScreen}
         options={{
-          drawerIcon: ({ color, size }) => <Ionicons name="fish-outline" size={size} color={color} />,
+          drawerIcon: ({ color, size }) => <Ionicons name="id-card-outline" size={size} color={color} />,
           title: 'Instrutores',
+        }}
+      />  
+      <Drawer.Screen
+        name="Exercicios"
+        component={ExerciciosScreen}
+        options={{
+          drawerIcon: ({ color, size }) => <MaterialCommunityIcons name="weight-lifter" size={size} color={color}/>,
+          title: 'Exercícios',
+        }}
+      />  
+      <Drawer.Screen
+        name="Treinos"
+        component={TreinosScreen}
+        options={{
+          drawerIcon: ({ color, size }) => <Ionicons name="barbell-outline" size={size} color={color} />,
+          title: 'Treinos',
+        }}
+      />  
+      <Drawer.Screen
+        name="Alimentos"
+        component={AlimentosScreen}
+        options={{
+          drawerIcon: ({ color, size }) => <Ionicons name="nutrition-outline" size={size} color={color} />,
+          title: 'Alimentos',
         }}
       />  
       <Drawer.Screen
         name="Refeicoes"
         component={RefeicoesScreen}
         options={{
-          drawerIcon: ({ color, size }) => <Ionicons name="fish-outline" size={size} color={color} />,
+          drawerIcon: ({ color, size }) => <Ionicons name="restaurant-outline" size={size} color={color} />,
           title: 'Refeições',
         }}
       />  
@@ -101,10 +124,11 @@ const DrawerNavigator = () => {
         name="Anamneses"
         component={AnamnesesScreen}
         options={{
-          drawerIcon: ({ color, size }) => <Ionicons name="fish-outline" size={size} color={color} />,
+          drawerIcon: ({ color, size }) => <MaterialCommunityIcons name="clipboard-pulse-outline" size={size} color={color}/>,
           title: 'Anamneses',
         }}
       />  
+
       <Drawer.Screen
         name="CriaAlimentos"
         component={CriaAlimentosScreen}
@@ -138,7 +162,7 @@ const DrawerNavigator = () => {
       <Drawer.Screen
         name="CriaAnamnese"
         component={CriaAnamneseScreen}
-        options={{ drawerItemStyle: { display: 'none' }, title: 'Nova anamnese' }}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Nova ficha médica' }}
       />
       <Drawer.Screen
         name="EditaAlimentos"
