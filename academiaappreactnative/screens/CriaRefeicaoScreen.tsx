@@ -8,7 +8,7 @@ import { DrawerParamList } from '../navigation/types';
 type Props = DrawerScreenProps<DrawerParamList, 'CriaRefeicao'>;
 
 const CriaRefeicaoScreen = ({ navigation }: Props) => {
-  const [listaPlanos, setListaPlanos] = useState<{id: number, nome: string}[]>([]);
+  const [listaPlanos, setListaPlanos] = useState<{id: number, titulo: string}[]>([]);
   const [listaAlimentos, setListaAlimentos] = useState<{id: number, nome: string}[]>([]);
 
   const [nome, setNome] = useState('');
@@ -85,8 +85,8 @@ const CriaRefeicaoScreen = ({ navigation }: Props) => {
       <Text style={styles.label}>Plano Alimentar</Text>
       <View style={styles.pickerContainer}>
         <Picker selectedValue={planoId} onValueChange={setPlanoId}>
-          <Picker.Item label="Nenhum (Refeição Avulsa)" value="" />
-          {listaPlanos.map(p => <Picker.Item key={p.id} label={p.nome} value={p.id.toString()} />)}
+          <Picker.Item label="Nenhum" value="" />
+          {listaPlanos.map(p => <Picker.Item key={p.id} label={p.titulo} value={p.id.toString()} />)}
         </Picker>
       </View>
 
@@ -109,7 +109,7 @@ const CriaRefeicaoScreen = ({ navigation }: Props) => {
         })}
       </View>
 
-      <TextInput placeholder="Descrição / Modo de preparo" value={descricao} onChangeText={setDescricao} style={[styles.input, { height: 80 }]} multiline />
+      <TextInput placeholder="Descrição" value={descricao} onChangeText={setDescricao} style={[styles.input, { height: 80 }]} multiline />
 
       <View style={styles.buttonContainer}>
         {saving ? <ActivityIndicator size="large" color="#4B7BE5" /> : <Button title="Salvar" onPress={handleSave} color="#4B7BE5" />}
