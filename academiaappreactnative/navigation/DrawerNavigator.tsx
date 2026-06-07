@@ -14,7 +14,7 @@ import EditaExercicioScreen from '../screens/EditaExercicioScreen';
 import TreinosScreen from '../screens/TreinosScreen';
 import CriaTreinoScreen from '../screens/CriaTreinoScreen';
 import AlunosScreen from '../screens/AlunosScreen';
-//import CriaExercicioScreen from '../screens/CriaExercicioScreen';
+import CriaAlunoScreen from '../screens/CriaAlunoScreen';
 //import EditaExercicioScreen from '../screens/EditaExercicioScreen';
 import HomeScreen from '../screens/HomeScreen';
 
@@ -86,6 +86,11 @@ const DrawerNavigator = () => {
         name="CriaTreino"
         component={CriaTreinoScreen}
         options={{ drawerItemStyle: { display: 'none' }, title: 'Novo treino' }}
+      />
+      <Drawer.Screen
+        name="CriaAluno"
+        component={CriaAlunoScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Novo aluno' }}
       />
       <Drawer.Screen
         name="EditaAlimentos"
