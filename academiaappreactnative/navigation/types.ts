@@ -88,4 +88,7 @@ export type DrawerParamList = {
   Instrutores: undefined;
   CriaInstrutor: undefined;
   EditaInstrutor: { instrutor: Instrutor };
+  Refeicoes: undefined;
+  CriaRefeicao: undefined;
+  EditaRefeicao: { refeicao: Refeicao };
 };
