@@ -17,7 +17,7 @@ import AlunosScreen from '../screens/AlunosScreen';
 import CriaAlunoScreen from '../screens/CriaAlunoScreen';
 import EditaAlunoScreen from '../screens/EditaAlunoScreen';
 import InstrutoresScreen from '../screens/InstrutoresScreen';
-//import CriaInstrutorScreen from '../screens/CriaInstrutorScreen';
+import CriaInstrutorScreen from '../screens/CriaInstrutorScreen';
 //import EditaInstrutorScreen from '../screens/EditaInstrutorScreen';
 import HomeScreen from '../screens/HomeScreen';
 
@@ -102,6 +102,11 @@ const DrawerNavigator = () => {
         name="CriaAluno"
         component={CriaAlunoScreen}
         options={{ drawerItemStyle: { display: 'none' }, title: 'Novo aluno' }}
+      />
+      <Drawer.Screen
+        name="CriaInstrutor"
+        component={CriaInstrutorScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Novo instrutor' }}
       />
       <Drawer.Screen
         name="EditaAlimentos"
