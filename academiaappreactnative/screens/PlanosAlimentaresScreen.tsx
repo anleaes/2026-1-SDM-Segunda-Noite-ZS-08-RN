@@ -1,69 +1,116 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, StyleSheet, ActivityIndicator } from 'react-native';
-// 👇 Aqui está o caminho ajustado apontando para a pasta navigation!
-import { PlanoAlimentar } from '../navigation/types'; 
+import { Ionicons } from '@expo/vector-icons';
+import { DrawerScreenProps } from '@react-navigation/drawer';
+import { useFocusEffect } from 'expo-router';
+import React, { useCallback, useState } from 'react';
+import { ActivityIndicator, FlatList, StyleSheet, Text, TouchableOpacity, View, Alert } from 'react-native';
+import { DrawerParamList } from '../navigation/types';
 
-export default function PlanosAlimentaresScreen() {
+// Ajuste a interface conforme os campos que você tem no seu banco de dados
+interface PlanoAlimentar {
+  id: number;
+  titulo: string;
+  descricao: string;
+  calorias: number;
+}
+
+type Props = DrawerScreenProps<DrawerParamList, 'PlanosAlimentares'>;
+
+const PlanosAlimentaresScreen = ({ navigation }: Props) => {
   const [planos, setPlanos] = useState<PlanoAlimentar[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // 🚨 Se o IP do seu computador mudou, atualize o número abaixo:
-    fetch('http://192.168.1.15:8000/api/planosalimentares/')
-      .then((response) => response.json())
-      .then((data) => {
-        setPlanos(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Erro ao buscar planos:", error);
-        setLoading(false);
-      });
-  }, []);
+  const fetchPlanos = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch('http://localhost:8000/planosalimentares/');
+      const data = await response.json();
+      setPlanos(data);
+    } catch (error) {
+      Alert.alert("Erro", "Não foi possível carregar os planos alimentares.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  if (loading) {
-    return (
-      <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#0000ff" />
-        <Text>Carregando planos...</Text>
+  useFocusEffect(
+    useCallback(() => {
+      fetchPlanos();
+    }, [])
+  );
+
+  const handleDelete = async (id: number) => {
+    Alert.alert("Excluir", "Tem certeza que deseja excluir este plano?", [
+      { text: "Cancelar" },
+      { 
+        text: "Excluir", 
+        style: "destructive",
+        onPress: async () => {
+          await fetch(`http://localhost:8000/planosalimentares/${id}/`, {
+            method: 'DELETE',
+          });
+          setPlanos(prev => prev.filter(p => p.id !== id));
+        } 
+      }
+    ]);
+  };
+
+  const renderItem = ({ item }: { item: PlanoAlimentar }) => (
+    <View style={styles.card}>
+      <Text style={styles.name}>{item.titulo}</Text>
+      <Text style={styles.description}>Calorias: {item.calorias} kcal</Text>
+      <Text style={styles.description}>{item.descricao}</Text>
+      
+      <View style={styles.row}>
+        <TouchableOpacity
+          style={styles.editButton}
+          onPress={() => navigation.navigate('EditaPlanosAlimentares', { plano: item })}
+        >
+          <Text style={styles.editText}>Editar</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.deleteButton}
+          onPress={() => handleDelete(item.id)}
+        >
+          <Text style={styles.editText}>Excluir</Text>
+        </TouchableOpacity>
       </View>
-    );
-  }
-
-  return (
-    <View style={styles.container}>
-      <FlatList
-        data={planos}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-          <View style={styles.card}>
-            <Text style={styles.titulo}>{item.titulo}</Text>
-            <Text style={styles.texto}>🎯 Objetivo: {item.objetivo}</Text>
-            <Text style={styles.texto}>🔥 Calorias Diárias: {item.calorias_diarias} kcal</Text>
-            <Text style={styles.texto}>📅 Início: {item.data_inicio}</Text>
-            {item.descricao && <Text style={styles.textoDescricao}>{item.descricao}</Text>}
-          </View>
-        )}
-      />
     </View>
   );
-}
+
+  return ( 
+    <View style={styles.container}>
+      <Text style={styles.title}>Planos Alimentares</Text>
+      {loading ? (
+        <ActivityIndicator size="large" color="#4B7BE5" />
+      ) : (
+        <FlatList
+          data={planos}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={renderItem}
+          contentContainerStyle={{ paddingBottom: 80 }}
+        />
+      )}
+      <TouchableOpacity
+        style={styles.fab}
+        onPress={() => navigation.navigate('CriaPlanosAlimentares')}
+      >
+        <Ionicons name="add" size={28} color="#fff"  />
+      </TouchableOpacity>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 16, backgroundColor: '#f0f0f5' },
-  loadingContainer: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  card: {
-    backgroundColor: '#ffffff',
-    padding: 16,
-    marginBottom: 12,
-    borderRadius: 10,
-    elevation: 3,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    shadowOffset: { width: 0, height: 2 },
-  },
-  titulo: { fontSize: 20, fontWeight: 'bold', color: '#2c3e50', marginBottom: 8 },
-  texto: { fontSize: 16, color: '#34495e', marginBottom: 4 },
-  textoDescricao: { fontSize: 14, color: '#7f8c8d', marginTop: 8, fontStyle: 'italic' }
+  container: { flex: 1, backgroundColor: '#fff', paddingHorizontal: 16, paddingTop: 16 },
+  title: { fontSize: 22, fontWeight: 'bold', marginBottom: 12, color: '#333', alignSelf: 'center' },
+  card: { backgroundColor: '#f0f4ff', padding: 16, borderRadius: 10, marginBottom: 12, elevation: 2 },
+  name: { fontSize: 18, fontWeight: '600', color: '#222' },
+  description: { fontSize: 14, color: '#666', marginTop: 4 },
+  editButton: { backgroundColor: '#4B7BE5', padding: 8, borderRadius: 6, marginRight: 8 },
+  editText: { color: '#fff', fontWeight: '500' },
+  fab: { position: 'absolute', right: 20, bottom: 20, backgroundColor: '#0D47A1', borderRadius: 28, padding: 14, elevation: 4 },
+  deleteButton: { backgroundColor: '#E54848', padding: 8, borderRadius: 6 },
+  row: { flexDirection: 'row', marginTop: 8 },
 });
+
+export default PlanosAlimentaresScreen;

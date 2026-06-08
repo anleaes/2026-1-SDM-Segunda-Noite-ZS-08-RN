@@ -121,4 +121,6 @@ export type DrawerParamList = {
   CriaAnamnese: undefined;
   EditaAnamnese: { anamnese: Anamnese };
   PlanosAlimentares: undefined;
+  EditaPlanosAlimentares: { plano: PlanoAlimentar };
+  CriaPlanosAlimentares: undefined;
 };
