@@ -85,6 +85,17 @@ export type Anamnese = {
   diabetes: boolean;
   fumante: boolean;
   observacoes: string;
+}
+
+export interface PlanoAlimentar {
+  id: number;
+  aluno: number;
+  titulo: string;
+  descricao?: string;
+  objetivo: string;
+  data_inicio: string;
+  data_fim?: string;
+  calorias_diarias: number;
 };
 
 export type DrawerParamList = {
@@ -109,4 +120,5 @@ export type DrawerParamList = {
   Anamneses: undefined;
   CriaAnamnese: undefined;
   EditaAnamnese: { anamnese: Anamnese };
+  PlanosAlimentares: undefined;
 };
