@@ -137,7 +137,7 @@ const DrawerNavigator = () => {
         name="PlanosMensalidade"
         component={PlanosMensalidadeScreen}
         options={{
-          drawerIcon: ({ color, size }) => <MaterialCommunityIcons name="clipboard-pulse-outline" size={size} color={color}/>,
+          drawerIcon: ({ color, size }) => <Ionicons name="cash-outline" size={size} color={color} />,
           title: 'Planos de mensalidade',
         }}
       />  
