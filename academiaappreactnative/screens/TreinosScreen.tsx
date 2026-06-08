@@ -56,6 +56,14 @@ const TreinosScreen = ({ navigation }: Props) => {
         Duração: {item.duracao_minutos} min | Aluno ID: {item.aluno}
       </Text>
       
+      {item.exercicios && item.exercicios.length > 0 ? (
+        <Text style={styles.exerciciosText}>
+          Exercícios (ID): {item.exercicios.join(', ')}
+        </Text>
+      ) : (
+        <Text style={styles.exerciciosTextVazio}>Nenhum exercício cadastrado</Text>
+      )}
+
       <View style={styles.row}>
         <TouchableOpacity
           style={styles.editButton}
@@ -103,6 +111,8 @@ const styles = StyleSheet.create({
   row: { flexDirection: 'row', marginTop: 8 },
   editButton: { backgroundColor: '#4B7BE5', padding: 8, borderRadius: 6, marginRight: 8 },
   deleteButton: { backgroundColor: '#E54848', padding: 8, borderRadius: 6 },
+  exerciciosText: { fontSize: 14, fontWeight: '500', color: '#4B7BE5', marginBottom: 10 },
+  exerciciosTextVazio: { fontSize: 14, fontStyle: 'italic', color: '#A0A0B0', marginBottom: 10 },
   editText: { color: '#fff', fontWeight: '500' },
   fab: { position: 'absolute', right: 20, bottom: 20, backgroundColor: '#0D47A1', borderRadius: 28, padding: 14, elevation: 4 },
 });

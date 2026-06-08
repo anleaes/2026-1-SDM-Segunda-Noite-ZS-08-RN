@@ -23,6 +23,7 @@ export type Treino = {
   nome: string;
   descricao: string;
   duracao_minutos: number;
+  exercicios?: number[];
 };
 
 export type ItemTreino = {
