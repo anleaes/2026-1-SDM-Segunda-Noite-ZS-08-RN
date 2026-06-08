@@ -8,6 +8,9 @@ import { DrawerParamList } from './types';
 import AlimentosScreen from '../screens/AlimentosScreen';
 import CriaAlimentosScreen from '../screens/CriaAlimentosScreen';
 import EditaAlimentosScreen from '../screens/EditaAlimentosScreen';
+import PlanosMensalidadeScreen from '../screens/PlanosMensalidadeScreen';
+//import CriaPlanoMensalidadeScreen from '../screens/CriaPlanoMensalidadeScreen';
+//import EditaPlanoMensalidadeScreen from '../screens/EditaPlanoMensalidadeScreen';
 import ExerciciosScreen from '../screens/ExerciciosScreen';
 import CriaExercicioScreen from '../screens/CriaExercicioScreen';
 import EditaExercicioScreen from '../screens/EditaExercicioScreen';
@@ -127,6 +130,14 @@ const DrawerNavigator = () => {
         options={{
           drawerIcon: ({ color, size }) => <MaterialCommunityIcons name="clipboard-pulse-outline" size={size} color={color}/>,
           title: 'Anamneses',
+        }}
+      />  
+      <Drawer.Screen
+        name="PlanosMensalidade"
+        component={PlanosMensalidadeScreen}
+        options={{
+          drawerIcon: ({ color, size }) => <MaterialCommunityIcons name="clipboard-pulse-outline" size={size} color={color}/>,
+          title: 'Planos de mensalidade',
         }}
       />  
 
