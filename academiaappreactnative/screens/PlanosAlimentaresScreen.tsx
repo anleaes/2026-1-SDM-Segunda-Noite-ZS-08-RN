@@ -2,16 +2,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { DrawerScreenProps } from '@react-navigation/drawer';
 import { useFocusEffect } from 'expo-router';
 import React, { useCallback, useState } from 'react';
-import { ActivityIndicator, FlatList, StyleSheet, Text, TouchableOpacity, View, Alert } from 'react-native';
-import { DrawerParamList } from '../navigation/types';
-
-// Ajuste a interface conforme os campos que você tem no seu banco de dados
-interface PlanoAlimentar {
-  id: number;
-  titulo: string;
-  descricao: string;
-  calorias: number;
-}
+import { ActivityIndicator, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { DrawerParamList, PlanoAlimentar } from '../navigation/types';
 
 type Props = DrawerScreenProps<DrawerParamList, 'PlanosAlimentares'>;
 
@@ -21,15 +13,11 @@ const PlanosAlimentaresScreen = ({ navigation }: Props) => {
 
   const fetchPlanos = async () => {
     setLoading(true);
-    try {
-      const response = await fetch('http://localhost:8000/planosalimentares/');
-      const data = await response.json();
-      setPlanos(data);
-    } catch (error) {
-      Alert.alert("Erro", "Não foi possível carregar os planos alimentares.");
-    } finally {
-      setLoading(false);
-    }
+    // Mantive o ?t= apenas para garantir que o cache do navegador não te atrapalhe
+    const response = await fetch(`http://localhost:8000/planosalimentares/?t=${new Date().getTime()}`);
+    const data = await response.json();
+    setPlanos(data);
+    setLoading(false);
   };
 
   useFocusEffect(
@@ -39,31 +27,24 @@ const PlanosAlimentaresScreen = ({ navigation }: Props) => {
   );
 
   const handleDelete = async (id: number) => {
-    Alert.alert("Excluir", "Tem certeza que deseja excluir este plano?", [
-      { text: "Cancelar" },
-      { 
-        text: "Excluir", 
-        style: "destructive",
-        onPress: async () => {
-          await fetch(`http://localhost:8000/planosalimentares/${id}/`, {
-            method: 'DELETE',
-          });
-          setPlanos(prev => prev.filter(p => p.id !== id));
-        } 
-      }
-    ]);
+    await fetch(`http://localhost:8000/planosalimentares/${id}/`, { method: 'DELETE' });
+    setPlanos(prev => prev.filter(p => p.id !== id));
   };
 
   const renderItem = ({ item }: { item: PlanoAlimentar }) => (
     <View style={styles.card}>
       <Text style={styles.name}>{item.titulo}</Text>
-      <Text style={styles.description}>Calorias: {item.calorias} kcal</Text>
-      <Text style={styles.description}>{item.descricao}</Text>
+      <Text style={styles.description}>
+        Objetivo: {item.objetivo} | Calorias: {item.calorias_diarias} kcal
+      </Text>
+      <Text style={styles.description}>
+        Início: {item.data_inicio} {item.data_fim ? `| Fim: ${item.data_fim}` : ''} | Aluno (ID): {item.aluno}
+      </Text>
       
       <View style={styles.row}>
         <TouchableOpacity
           style={styles.editButton}
-          onPress={() => navigation.navigate('EditaPlanosAlimentares', { plano: item })}
+          onPress={() => navigation.navigate('EditaPlanoAlimentar', { plano: item })}
         >
           <Text style={styles.editText}>Editar</Text>
         </TouchableOpacity>
@@ -77,7 +58,7 @@ const PlanosAlimentaresScreen = ({ navigation }: Props) => {
     </View>
   );
 
-  return ( 
+  return (
     <View style={styles.container}>
       <Text style={styles.title}>Planos Alimentares</Text>
       {loading ? (
@@ -90,10 +71,7 @@ const PlanosAlimentaresScreen = ({ navigation }: Props) => {
           contentContainerStyle={{ paddingBottom: 80 }}
         />
       )}
-      <TouchableOpacity
-        style={styles.fab}
-        onPress={() => navigation.navigate('CriaPlanosAlimentares')}
-      >
+      <TouchableOpacity style={styles.fab} onPress={() => navigation.navigate('CriaPlanoAlimentar')}>
         <Ionicons name="add" size={28} color="#fff"  />
       </TouchableOpacity>
     </View>
@@ -105,7 +83,7 @@ const styles = StyleSheet.create({
   title: { fontSize: 22, fontWeight: 'bold', marginBottom: 12, color: '#333', alignSelf: 'center' },
   card: { backgroundColor: '#f0f4ff', padding: 16, borderRadius: 10, marginBottom: 12, elevation: 2 },
   name: { fontSize: 18, fontWeight: '600', color: '#222' },
-  description: { fontSize: 14, color: '#666', marginTop: 4 },
+  description: { fontSize: 14, color: '#666', marginTop: 4, marginBottom: 4 },
   editButton: { backgroundColor: '#4B7BE5', padding: 8, borderRadius: 6, marginRight: 8 },
   editText: { color: '#fff', fontWeight: '500' },
   fab: { position: 'absolute', right: 20, bottom: 20, backgroundColor: '#0D47A1', borderRadius: 28, padding: 14, elevation: 4 },
