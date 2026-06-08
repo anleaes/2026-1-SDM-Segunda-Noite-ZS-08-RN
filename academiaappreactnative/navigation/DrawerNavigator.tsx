@@ -10,7 +10,7 @@ import CriaAlimentosScreen from '../screens/CriaAlimentosScreen';
 import EditaAlimentosScreen from '../screens/EditaAlimentosScreen';
 import PlanosMensalidadeScreen from '../screens/PlanosMensalidadeScreen';
 import CriaPlanoMensalidadeScreen from '../screens/CriaPlanoMensalidadeScreen';
-//import EditaPlanoMensalidadeScreen from '../screens/EditaPlanoMensalidadeScreen';
+import EditaPlanoMensalidadeScreen from '../screens/EditaPlanoMensalidadeScreen';
 import ExerciciosScreen from '../screens/ExerciciosScreen';
 import CriaExercicioScreen from '../screens/CriaExercicioScreen';
 import EditaExercicioScreen from '../screens/EditaExercicioScreen';
@@ -210,6 +210,11 @@ const DrawerNavigator = () => {
         name="EditaAnamnese"
         component={EditaAnamneseScreen}
         options={{ drawerItemStyle: { display: 'none' }, title: 'Editar ficha médica' }}
+      />
+      <Drawer.Screen
+        name="EditaPlanoMensalidade"
+        component={EditaPlanoMensalidadeScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Editar plano de mensalidade' }}
       />
       <Drawer.Screen 
         name="PlanosAlimentares" 
