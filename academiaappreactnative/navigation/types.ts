@@ -98,6 +98,15 @@ export interface PlanoAlimentar {
   calorias_diarias: number;
 };
 
+export type PlanoMensalidade = {
+  id: number;
+  nome: string;
+  descricao: string;
+  valor: string;
+  duracao_dias: number;
+  ativo: boolean;
+};
+
 export type DrawerParamList = {
   Home: undefined;
   Alimentos: undefined;
@@ -120,5 +129,8 @@ export type DrawerParamList = {
   Anamneses: undefined;
   CriaAnamnese: undefined;
   EditaAnamnese: { anamnese: Anamnese };
+  PlanosMensalidade: undefined;
+  CriaPlanoMensalidade: undefined;
+  EditaPlanoMensalidade: { plano: PlanoMensalidade };
   PlanosAlimentares: undefined;
 };
