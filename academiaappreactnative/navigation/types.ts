@@ -135,6 +135,6 @@ export type DrawerParamList = {
   CriaPlanoMensalidade: undefined;
   EditaPlanoMensalidade: { plano: PlanoMensalidade };
   PlanosAlimentares: undefined;
-  EditaPlanosAlimentares: { plano: PlanoAlimentar };
-  CriaPlanosAlimentares: undefined;
+  EditaPlanoAlimentar: { plano: PlanoAlimentar };
+  CriaPlanoAlimentar: undefined;
 };
