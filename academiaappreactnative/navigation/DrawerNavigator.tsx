@@ -8,6 +8,9 @@ import { DrawerParamList } from './types';
 import AlimentosScreen from '../screens/AlimentosScreen';
 import CriaAlimentosScreen from '../screens/CriaAlimentosScreen';
 import EditaAlimentosScreen from '../screens/EditaAlimentosScreen';
+import PlanosMensalidadeScreen from '../screens/PlanosMensalidadeScreen';
+//import CriaPlanoMensalidadeScreen from '../screens/CriaPlanoMensalidadeScreen';
+//import EditaPlanoMensalidadeScreen from '../screens/EditaPlanoMensalidadeScreen';
 import ExerciciosScreen from '../screens/ExerciciosScreen';
 import CriaExercicioScreen from '../screens/CriaExercicioScreen';
 import EditaExercicioScreen from '../screens/EditaExercicioScreen';
@@ -26,6 +29,7 @@ import AnamnesesScreen from '../screens/AnamnesesScreen';
 import CriaAnamneseScreen from '../screens/CriaAnamneseScreen';
 import EditaAnamneseScreen from '../screens/EditaAnamneseScreen';
 import HomeScreen from '../screens/HomeScreen';
+import PlanosAlimentaresScreen from '../screens/PlanosAlimentaresScreen';
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
 
@@ -128,6 +132,14 @@ const DrawerNavigator = () => {
           title: 'Anamneses',
         }}
       />  
+      <Drawer.Screen
+        name="PlanosMensalidade"
+        component={PlanosMensalidadeScreen}
+        options={{
+          drawerIcon: ({ color, size }) => <MaterialCommunityIcons name="clipboard-pulse-outline" size={size} color={color}/>,
+          title: 'Planos de mensalidade',
+        }}
+      />  
 
       <Drawer.Screen
         name="CriaAlimentos"
@@ -193,6 +205,11 @@ const DrawerNavigator = () => {
         name="EditaAnamnese"
         component={EditaAnamneseScreen}
         options={{ drawerItemStyle: { display: 'none' }, title: 'Editar ficha médica' }}
+      />
+      <Drawer.Screen 
+        name="PlanosAlimentares" 
+        component={PlanosAlimentaresScreen} 
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Novo Plano Alimentar' }}
       />
 
     </Drawer.Navigator>  
