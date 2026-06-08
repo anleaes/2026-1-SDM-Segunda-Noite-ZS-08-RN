@@ -31,6 +31,7 @@ import CriaAnamneseScreen from '../screens/CriaAnamneseScreen';
 import EditaAnamneseScreen from '../screens/EditaAnamneseScreen';
 import HomeScreen from '../screens/HomeScreen';
 import PlanosAlimentaresScreen from '../screens/PlanosAlimentaresScreen';
+import CriaPlanoAlimentarScreen from '../screens/CriaPlanoAlimentarScreen';
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
 
@@ -181,6 +182,11 @@ const DrawerNavigator = () => {
         name="CriaPlanoMensalidade"
         component={CriaPlanoMensalidadeScreen}
         options={{ drawerItemStyle: { display: 'none' }, title: 'Novo plano de mensalidade' }}
+      />
+      <Drawer.Screen
+        name="CriaPlanoAlimentar"
+        component={CriaPlanoAlimentarScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Novo plano alimentar' }}
       />
       <Drawer.Screen
         name="EditaAlimentos"
