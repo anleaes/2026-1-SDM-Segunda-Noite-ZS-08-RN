@@ -1,11 +1,8 @@
-import DrawerNavigator from '../../navigation/DrawerNavigator';
-import { NavigationContainer } from '@react-navigation/native';
+import DrawerNavigator from '../../navigation/DrawerNavigator'; // Ajuste o caminho se necessário
 import React from 'react';
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <DrawerNavigator />
-    </NavigationContainer>
+    <DrawerNavigator />
   );
 }
