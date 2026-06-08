@@ -1,8 +1,12 @@
-import DrawerNavigator from '../../navigation/DrawerNavigator'; // Ajuste o caminho se necessário
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
+import DrawerNavigator from '../../navigation/DrawerNavigator';
 
 export default function App() {
   return (
-    <DrawerNavigator />
+    // @ts-ignore
+    <NavigationContainer independent={true}>
+      <DrawerNavigator />
+    </NavigationContainer>
   );
 }
