@@ -214,7 +214,7 @@ const DrawerNavigator = () => {
       <Drawer.Screen
         name="EditaPlanoMensalidade"
         component={EditaPlanoMensalidadeScreen}
-        options={{ drawerItemStyle: { display: 'none' }, title: 'Editar plano de mensalidade' }}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Editar plano' }}
       />
       <Drawer.Screen 
         name="PlanosAlimentares" 
