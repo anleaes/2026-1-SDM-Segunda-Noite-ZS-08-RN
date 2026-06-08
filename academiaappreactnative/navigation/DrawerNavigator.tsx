@@ -210,17 +210,17 @@ const DrawerNavigator = () => {
         name="EditaAnamnese"
         component={EditaAnamneseScreen}
         options={{ drawerItemStyle: { display: 'none' }, title: 'Editar ficha médica' }}
+      
       />
       <Drawer.Screen
-        name="EditaPlanoMensalidade"
-        component={EditaPlanoMensalidadeScreen}
-        options={{ drawerItemStyle: { display: 'none' }, title: 'Editar plano' }}
-      />
-      <Drawer.Screen 
-        name="PlanosAlimentares" 
-        component={PlanosAlimentaresScreen} 
-        options={{ drawerItemStyle: { display: 'none' }, title: 'Novo Plano Alimentar' }}
-      />
+        name="PlanosAlimentares"
+        component={PlanosAlimentaresScreen}
+        options={{drawerIcon: ({ color, size }) => (
+      <Ionicons name="calendar-outline" size={size} color={color} />
+    ),
+    title: 'Planos Alimentares',
+  }}
+/>
 
     </Drawer.Navigator>  
   );
