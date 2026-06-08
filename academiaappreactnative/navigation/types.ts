@@ -117,6 +117,7 @@ export type DrawerParamList = {
   EditaExercicio: { exercicio: Exercicio };
   Treinos: undefined;
   CriaTreino: undefined;
+  EditaTreino: { treino: Treino };
   Alunos: undefined;
   CriaAluno: undefined;
   EditaAluno: { aluno: Aluno };
